@@ -84,21 +84,168 @@
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
             
-            <Canvas Grid.Column="0">
-                <Button x:Name="ButtonShowSide"
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Canvas Grid.Row="0">
+                    <Button x:Name="ButtonShowSide"
                         Canvas.Top="20"
                         Canvas.Right="10"
                         Background="Transparent"
                         BorderThickness="0"
                         Click="ButtonShowSide_OnClick"
                         Visibility="Collapsed">
-                    <Image Source="images/less_than_24px.png"
+                        <Image Source="images/less_than_24px.png"
                            Stretch="None"
                            RenderOptions.BitmapScalingMode="Fant"></Image>
-                </Button>
+                    </Button>
 
+                    <StackPanel Orientation="Horizontal"
+                            Canvas.Top="30"
+                            Canvas.Left="10">
+                        <Border CornerRadius="10"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource ElementForeGround}"
+                            Width="100"
+                            Height="25"
+                            Margin="5">
+                            <TextBlock Text="Action"
+                                   Foreground="{DynamicResource ElementForeGround}"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border CornerRadius="10"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource ElementForeGround}"
+                            Width="100"
+                            Height="25"
+                            Margin="5">
+                            <TextBlock Text="Adventure"
+                                   Foreground="{DynamicResource ElementForeGround}"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border CornerRadius="10"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource ElementForeGround}"
+                            Width="100"
+                            Height="25"
+                            Margin="5">
+                            <TextBlock Text="Mystery"
+                                   Foreground="{DynamicResource ElementForeGround}"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
 
-            </Canvas>
+                    <TextBlock Canvas.Top="60"
+                           Canvas.Left="16"
+                            Text="The Boss Baby"
+                           FontSize="60"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource ElementForeGround}"/>
+
+                    <TextBlock Canvas.Top="135"
+                           Canvas.Left="25"
+                           Text="(2017)"
+                           FontSize="22"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource ElementForeGround}"/>
+
+                    <Image Canvas.Top="138"
+                       Canvas.Left="124"
+                       Source="images/star_24px.png"></Image>
+                    <TextBlock Canvas.Top="135"
+                           Canvas.Left="150"
+                           Text="6.3/10"
+                           FontSize="22"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource ElementForeGround}"/>
+
+                    <TextBlock Canvas.Top="175"
+                           Canvas.Left="24"
+                           Text="A team of explorers travel through a wormhole in space in an attempt to ensure humanity's surviva"
+                           Width="400"
+                           TextWrapping="Wrap"
+                           FontSize="16"
+                           FontWeight="Regular"
+                           Foreground="{DynamicResource ElementForeGround}"/>
+                </Canvas>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="1"
+                                CornerRadius="5"
+                                Background="{DynamicResource ElementForeGround}"
+                                Padding="5"
+                                Margin="3"
+                                Grid.ColumnSpan="3">
+                            <Button Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="18"
+                                    FontWeight="ExtraBold"
+                                    Foreground="#3C99BF"
+                                    HorizontalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="images/play_24px.png"
+                                           Stretch="None"
+                                           Width="20"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="10, 0, 0,0">Play</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+
+                        <Border Grid.Column="5"
+                                CornerRadius="5"
+                                BorderThickness="2"
+                                BorderBrush="{DynamicResource ElementForeGround}"
+                                Background="Transparent"
+                                Padding="2"
+                                Margin="3"
+                                Grid.ColumnSpan="4">
+                            <Button Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="18"
+                                    Content="Add to My List"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource ElementForeGround}"
+                                    HorizontalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
 
             <Grid  Grid.Column="1" 
                    x:Name="GridSearchSide"
@@ -186,32 +333,37 @@
                              ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Width="250"
-                                      Height="100">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0"
-                                           Source="{Binding Poster}"/>
-                                    <Canvas Grid.Column="1">
-                                        <TextBlock Canvas.Top="10"
-                                                   Canvas.Left="10"
-                                                   Foreground="{DynamicResource ElementForeGround}"
-                                                   FontSize="12"
-                                                   Text="{Binding Name}"/>
+                                <Border CornerRadius="6"
+                                        Background="#3C99BF"
+                                        Margin="0, 5"
+                                        Padding="5">
+                                    <Grid Width="250"
+                                          Height="100">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0"
+                                               Source="{Binding Poster}"/>
+                                        <Canvas Grid.Column="1">
+                                            <TextBlock Canvas.Top="10"
+                                                       Canvas.Left="10"
+                                                       Foreground="{DynamicResource ElementForeGround}"
+                                                       FontSize="12"
+                                                       Text="{Binding Name}"/>
 
-                                        <TextBlock Canvas.Top="40"
-                                                   Canvas.Left="10"
-                                                   Foreground="{DynamicResource ElementForeGround}"
-                                                   FontSize="11"
-                                                   Text="{Binding Summary}"
-                                                   Width="130"
-                                                   Height="50"
-                                                   TextWrapping="Wrap"
-                                                   TextTrimming="WordEllipsis"/>
-                                    </Canvas>
-                                </Grid>
+                                            <TextBlock Canvas.Top="40"
+                                                       Canvas.Left="10"
+                                                       Foreground="{DynamicResource ElementForeGround}"
+                                                       FontSize="11"
+                                                       Text="{Binding Summary}"
+                                                       Width="130"
+                                                       Height="50"
+                                                       TextWrapping="Wrap"
+                                                       TextTrimming="WordEllipsis"/>
+                                        </Canvas>
+                                    </Grid>
+                                </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

@@ -122,6 +122,11 @@
   <ItemGroup>
     <Resource Include="images\less_than_24px.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\star_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\play_24px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
