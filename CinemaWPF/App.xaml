@@ -6,7 +6,13 @@
     <Application.Resources>
          <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
-                 <ResourceDictionary Source="MainWindowDictionary.xaml"/>
+                <ResourceDictionary Source="MainWindowDictionary.xaml"/>
+                <ResourceDictionary Source="Dictionaries/MenuButton.xaml"/>
+                <ResourceDictionary Source="Dictionaries/BaseButton.xaml"/>
+                <ResourceDictionary Source="Dictionaries/PlayButton.xaml"/>
+                <ResourceDictionary Source="Dictionaries/OrdinaryButton.xaml"/>
+                <ResourceDictionary Source="Dictionaries/ResizeButton.xaml"/>
+                <ResourceDictionary Source="Dictionaries/SearchButton.xaml"/>
              </ResourceDictionary.MergedDictionaries>
          </ResourceDictionary>
     </Application.Resources>

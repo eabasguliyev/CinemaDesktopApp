@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaWPF"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
         Title="Cinema" Height="536" Width="990"
         MinHeight="530"
         MinWidth="910"
-        Background="#3C99BF">
+        Background="{DynamicResource BackgroundColor}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -28,52 +29,47 @@
             </Grid.RowDefinitions>
 
             <Button Grid.Row="0"
-                    Background="Transparent"
-                    BorderThickness="0">
-                <Image Source="images/menu_24px.png"
-                       Stretch="None"
-                       RenderOptions.BitmapScalingMode="Fant"></Image>
+                    Style="{StaticResource MenuButtonStyle}">
+                    <Button.Resources>
+                    <ImageSource x:Key="Img">images/menu_24px.png</ImageSource>
+                </Button.Resources>
             </Button>
 
             <Button Grid.Row="2"
                     Background="Transparent"
-                    BorderThickness="0">
-                <Image Source="images/home_24px.png"
-                       Stretch="None"
-                       RenderOptions.BitmapScalingMode="Fant"></Image>
+                    Style="{StaticResource MenuButtonStyle}">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">images/home_24px.png</ImageSource>
+                </Button.Resources>
             </Button>
 
             <Button Grid.Row="3"
-                    Background="Transparent"
-                    BorderThickness="0">
-                <Image Source="images/bookmark_30px.png"
-                       Stretch="None"
-                       RenderOptions.BitmapScalingMode="Fant"></Image>
+                    Style="{StaticResource MenuButtonStyle}">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">images/bookmark_30px.png</ImageSource>
+                </Button.Resources>
             </Button>
 
 
             <Button Grid.Row="4"
-                    Background="Transparent"
-                    BorderThickness="0">
-                <Image Source="images/notification_24px.png"
-                       Stretch="None"
-                       RenderOptions.BitmapScalingMode="Fant"></Image>
+                    Style="{StaticResource MenuButtonStyle}">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">images/notification_24px.png</ImageSource>
+                </Button.Resources>
             </Button>
 
             <Button Grid.Row="6"
-                    Background="Transparent"
-                    BorderThickness="0">
-                <Image Source="images/user_24px.png"
-                       Stretch="None"
-                       RenderOptions.BitmapScalingMode="Fant"></Image>
+                    Style="{StaticResource MenuButtonStyle}">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">images/user_24px.png</ImageSource>
+                </Button.Resources>
             </Button>
 
             <Button Grid.Row="7"
-                    Background="Transparent"
-                    BorderThickness="0">
-                <Image Source="images/settings_24px.png"
-                       Stretch="None"
-                       RenderOptions.BitmapScalingMode="Fant"></Image>
+                    Style="{StaticResource MenuButtonStyle}">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">images/settings_24px.png</ImageSource>
+                </Button.Resources>
             </Button>
         </Grid>
 
@@ -83,114 +79,119 @@
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Canvas Grid.Row="0">
-                    <Button x:Name="ButtonShowSide"
-                        Canvas.Top="20"
-                        Canvas.Right="10"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Click="ButtonShowSide_OnClick"
-                        Visibility="Collapsed">
-                        <Image Source="images/less_than_24px.png"
-                           Stretch="None"
-                           RenderOptions.BitmapScalingMode="Fant"></Image>
+
+            <Image Grid.Column="0"
+                   Source="{Binding Movie.Poster}"
+                   Stretch="Uniform">
+                <Image.Effect>
+                    <BlurEffect Radius="10"/>
+                </Image.Effect>
+            </Image>
+
+            <Grid x:Name="GridMix" Grid.Column="0"
+                  Visibility="Visible">
+                <Canvas>
+                    <Button x:Name="ButtonShowSide2"
+                            Canvas.Top="20"
+                            Canvas.Right="10"
+                            Click="ButtonShowSide_OnClick"
+                            Visibility="Collapsed"
+                            Style="{StaticResource StyleResizeButton}">
+                        <Button.Resources>
+                            <ImageSource x:Key="Img">images/less_than_24px.png</ImageSource>
+                        </Button.Resources>
                     </Button>
-
-                    <StackPanel Orientation="Horizontal"
-                            Canvas.Top="30"
-                            Canvas.Left="10">
-                        <Border CornerRadius="10"
-                            BorderThickness="2"
-                            BorderBrush="{DynamicResource ElementForeGround}"
-                            Width="100"
-                            Height="25"
-                            Margin="5">
-                            <TextBlock Text="Action"
-                                   Foreground="{DynamicResource ElementForeGround}"
-                                   FontSize="15"
-                                   HorizontalAlignment="Center"/>
-                        </Border>
-                        <Border CornerRadius="10"
-                            BorderThickness="2"
-                            BorderBrush="{DynamicResource ElementForeGround}"
-                            Width="100"
-                            Height="25"
-                            Margin="5">
-                            <TextBlock Text="Adventure"
-                                   Foreground="{DynamicResource ElementForeGround}"
-                                   FontSize="15"
-                                   HorizontalAlignment="Center"/>
-                        </Border>
-                        <Border CornerRadius="10"
-                            BorderThickness="2"
-                            BorderBrush="{DynamicResource ElementForeGround}"
-                            Width="100"
-                            Height="25"
-                            Margin="5">
-                            <TextBlock Text="Mystery"
-                                   Foreground="{DynamicResource ElementForeGround}"
-                                   FontSize="15"
-                                   HorizontalAlignment="Center"/>
-                        </Border>
-                    </StackPanel>
-
-                    <TextBlock Canvas.Top="60"
-                           Canvas.Left="16"
-                            Text="The Boss Baby"
-                           FontSize="60"
-                           FontWeight="SemiBold"
-                           Foreground="{DynamicResource ElementForeGround}"/>
-
-                    <TextBlock Canvas.Top="135"
-                           Canvas.Left="25"
-                           Text="(2017)"
-                           FontSize="22"
-                           FontWeight="SemiBold"
-                           Foreground="{DynamicResource ElementForeGround}"/>
-
-                    <Image Canvas.Top="138"
-                       Canvas.Left="124"
-                       Source="images/star_24px.png"></Image>
-                    <TextBlock Canvas.Top="135"
-                           Canvas.Left="150"
-                           Text="6.3/10"
-                           FontSize="22"
-                           FontWeight="SemiBold"
-                           Foreground="{DynamicResource ElementForeGround}"/>
-
-                    <TextBlock Canvas.Top="175"
-                           Canvas.Left="24"
-                           Text="A team of explorers travel through a wormhole in space in an attempt to ensure humanity's surviva"
-                           Width="400"
-                           TextWrapping="Wrap"
-                           FontSize="16"
-                           FontWeight="Regular"
-                           Foreground="{DynamicResource ElementForeGround}"/>
                 </Canvas>
 
-                <Grid Grid.Row="1">
+                <Grid x:Name="GridHome"
+                      Visibility="Visible">
+                    <Image x:Name="ImageHome"/>
+                </Grid>
+
+                <Grid x:Name="GridTrailer"
+                      Visibility="Collapsed">
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Button x:Name="ButtonBack"
+                                Style="{StaticResource StyleOrdinaryButton}"
+                                MaxHeight="35"
+                                MaxWidth="60"
+                                Content="Back"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="10"
+                                Click="ButtonBack_OnClick"/>
+                    </Grid>
+
+                    <Border Grid.Row="1"
+                            Margin="50, 50"
+                            x:Name="Border">
+                        <wpf:ChromiumWebBrowser x:Name="ChromiumBrowser"/>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="GridMovie"
+                  Grid.Column="0"
+                  Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Canvas Grid.Column="1">
+                            <Button Canvas.Top="20"
+                                Canvas.Right="10"
+                                x:Name="ButtonShowSide"
+                                HorizontalAlignment="Right"
+                                Click="ButtonShowSide_OnClick"
+                                Visibility="Collapsed"
+                                Style="{StaticResource StyleResizeButton}">
+                                <Button.Resources>
+                                    <ImageSource x:Key="Img">images/less_than_24px.png</ImageSource>
+                                </Button.Resources>
+                            </Button>
+                        </Canvas>
+
+
+                        <WrapPanel Grid.Column="0" 
+                                Orientation="Horizontal"
+                                Margin="10, 40, 0, 0"
+                                x:Name="PanelGenre"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        </WrapPanel>
+                    </Grid>
+
+                    <TextBlock Grid.Row="1"
+                           Text="{Binding Movie.Name}"
+                           VerticalAlignment="Center"
+                           Margin="10"
+                           FontSize="60"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource ElementForeGround}"/>
+
+                    <Grid Grid.Row="2" Margin="10">
+                        <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -203,47 +204,75 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="1"
-                                CornerRadius="5"
-                                Background="{DynamicResource ElementForeGround}"
-                                Padding="5"
-                                Margin="3"
-                                Grid.ColumnSpan="3">
-                            <Button Background="Transparent"
-                                    BorderThickness="0"
-                                    FontSize="18"
-                                    FontWeight="ExtraBold"
-                                    Foreground="#3C99BF"
-                                    HorizontalAlignment="Center">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="images/play_24px.png"
-                                           Stretch="None"
-                                           Width="20"
-                                           Height="30"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"/>
-                                    <TextBlock Margin="10, 0, 0,0">Play</TextBlock>
-                                </StackPanel>
-                            </Button>
-                        </Border>
+                        <TextBlock Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Text="{Binding Movie.Year}"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource ElementForeGround}"/>
 
-                        <Border Grid.Column="5"
-                                CornerRadius="5"
-                                BorderThickness="2"
-                                BorderBrush="{DynamicResource ElementForeGround}"
-                                Background="Transparent"
-                                Padding="2"
-                                Margin="3"
-                                Grid.ColumnSpan="4">
-                            <Button Background="Transparent"
-                                    BorderThickness="0"
-                                    FontSize="18"
-                                    Content="Add to My List"
-                                    FontWeight="ExtraBold"
-                                    Foreground="{DynamicResource ElementForeGround}"
-                                    HorizontalAlignment="Center"/>
-                        </Border>
+                        <Image Grid.Column="1" 
+                           Source="images/star_24px.png"
+                           Width="25"
+                           Height="25"
+                           VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="2"
+                                   VerticalAlignment="Center"
+                                   Grid.ColumnSpan="2"
+                               Text="{Binding Movie.Imdb}"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource ElementForeGround}"/>
+
                     </Grid>
+
+                    <TextBlock  Grid.Row="3"
+                            Text="{Binding Movie.Summary}"
+                            Margin="10"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                           MaxWidth="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualWidth}"
+                           TextWrapping="Wrap"
+                           FontSize="16"
+                           FontWeight="Regular"
+                           Foreground="{DynamicResource ElementForeGround}"/>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="1"
+                            Style="{StaticResource StylePlayButton}"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Top"
+                            MaxWidth="150"
+                            Click="ButtonPlay_OnClick"/>
+
+                    <Button Grid.Column="5"
+                            Grid.ColumnSpan="4"
+                            Style="{StaticResource StyleOrdinaryButton}"
+                            Content="Add to My List"
+                            VerticalAlignment="Top"
+                            MaxWidth="200"/>
                 </Grid>
             </Grid>
 
@@ -259,12 +288,11 @@
                     <Button x:Name="ButtonCollapse"
                             Canvas.Top="20"
                             Canvas.Left="10"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Click="ButtonCollapse_OnClick">
-                        <Image Source="images/more_than_24px.png"
-                               Stretch="None"
-                               RenderOptions.BitmapScalingMode="Fant"></Image>
+                            Click="ButtonCollapse_OnClick"
+                            Style="{StaticResource StyleResizeButton}">
+                        <Button.Resources>
+                            <ImageSource x:Key="Img">images/more_than_24px.png</ImageSource>
+                        </Button.Resources>
                     </Button>
 
                     <TextBlock Canvas.Top="70"
@@ -294,19 +322,13 @@
                                      VerticalContentAlignment="Center"
                                      Padding="5, 0,0,0"
                                      Width="190"/>
-                            <Border Grid.Column="1"
-                                    CornerRadius="5"
-                                    Padding="1"
-                                    Background="#278AAB">
-                                <Button x:Name="ButtonSearch"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        Click="ButtonSearch_OnClick">
-                                    <Image Source="images/search_24px.png"
-                                           Stretch="Uniform"
-                                           RenderOptions.BitmapScalingMode="Fant"></Image>
-                                </Button>
-                            </Border>
+                            <Button Grid.Column="1"
+                                    Click="ButtonSearch_OnClick"
+                                    Style="{StaticResource StyleSearchButton}">
+                                    <Button.Resources>
+                                        <ImageSource x:Key="Img">images/search_24px.png</ImageSource>
+                                    </Button.Resources>
+                            </Button>
                         </Grid>
                     </Border>
                 </Canvas>
@@ -330,7 +352,8 @@
                              Margin="10"
                              ItemsSource="{Binding Movies}"
                              ScrollViewer.CanContentScroll="False"
-                             ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                             MouseDoubleClick="ListBoxMovies_OnMouseDoubleClick">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="6"

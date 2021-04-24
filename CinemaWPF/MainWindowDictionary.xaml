@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:CinemaWPF"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <SolidColorBrush x:Key="ElementForeGround">White</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundColor">#3C99BF</SolidColorBrush>
     <system:Double x:Key="FontSize">25</system:Double>
 </ResourceDictionary>
