@@ -131,8 +131,20 @@ namespace CinemaWPF
                 Movie = Movies[0];
                 AddGenrePanel();
 
+                
+                CollapseGridTrailer();
                 GridHome.Visibility = Visibility.Collapsed;
                 GridMovie.Visibility = Visibility.Visible;
+
+                GridSearchResult.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                //CollapseGridTrailer();
+                //GridMix.Visibility = Visibility.Visible;
+                //GridMovie.Visibility = Visibility.Collapsed;
+                //GridHome.Visibility = Visibility.Visible;
+                GridSearchResult.Visibility = Visibility.Collapsed;
             }
         }
         
@@ -301,8 +313,12 @@ namespace CinemaWPF
 
         private void CollapseGridTrailer()
         {
-            ChromiumBrowser.Address = string.Empty;
-            ChromiumBrowser.Reload();
+            if (ChromiumBrowser.Address != null)
+            {
+                ChromiumBrowser.Address = string.Empty;
+                ChromiumBrowser?.Reload();
+            }
+
             GridMovie.Visibility = Visibility.Visible;
             GridMix.Visibility = Visibility.Collapsed;
             GridTrailer.Visibility = Visibility.Collapsed;
